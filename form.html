@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <style>
+        .container {
+            position: relative;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background: rgb(255, 154, 186);
+            margin: 5px;
+            width: 220px;
+            line-height: 80px;
+            border: 1.5px solid rgb(18, 19, 18);
+            padding: 20px;
+
+        }
+
+        #myBtnContainer {
+            margin-top: 20px;
+            overflow: hidden;
+            text-align: center;
+            justify-content: center;
+
+        }
+
+        .container2 {
+            margin-top: 20px;
+            overflow: hidden;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .container3 {
+            margin-top: 20px;
+            overflow: hidden;
+            text-align: center;
+            justify-content: center
+        }
+
+        #producto {
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background: rgb(141, 187, 255);
+            margin: 5px;
+            width: 220px;
+            line-height: 80px;
+            border: 1.5px solid rgb(18, 19, 18);
+            padding: 20px;
+
+        }
+
+
+        /* Hide the browser's default radio button */
+
+        /*
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            margin-top: 300px;
+        }
+        */
+
+        /*
+        .checkmark {
+            position: absolute;
+            top: 30%;
+            left: 2%;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+        */
+
+
+
+        /* On mouse-over, add a grey background color */
+
+        /*
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+        */
+
+
+        /* When the radio button is checked, add a blue background */
+        /*
+        .container input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+        */
+
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        /*
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        */
+
+
+
+        /* Show the indicator (dot/circle) when checked */
+        /*
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+        */
+
+        /* Style the indicator (dot/circle) */
+
+        /*
+        .container .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+        */
+
+
+
+        /********************/
+
+
+        .filterDiv {
+            float: left;
+            background-color: #2196F3;
+            color: #ffffff;
+            width: 220px;
+            line-height: 80px;
+            margin: 2px;
+            display: none;
+
+        }
+
+        .show {
+            display: block;
+        }
+
+
+
+
+
+        /* Style the buttons */
+        /********************/
+
+        /*
+        .btn {
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn.active {
+            background-color: #666;
+            color: white;
+        }
+        */
+
+        .centerwrapper {
+            margin: auto;
+            width: 500pt;
+            column-count: 3;
+        }
+    </style>
+
+
+    <form name="form1" id="form1" method="POST">
+
+
+        <h3>Filter DIV Elements</h3>
+        <!-- return false value of an event handler determines whether or not the default browser behaviour should take place as well. -->
+
+        <section>
+
+            <div id="myBtnContainer">
+
+
+                <!------------------->
+
+                <label class="container">Todos
+                    <input type="radio" checked="checked" name="canal" onclick="filterSelection('all')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+                <!------------------->
+
+
+
+                <label class="container">Talleres
+                    <input type="radio" value="talleres" name="canal" onclick="filterSelection('talleres')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+                <label class="container">Freelance
+                    <input type="radio" value="freelance" name="canal" onclick="filterSelection('freelance')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+
+                <!------------------->
+                <label class="container">Licitaciones
+                    <input type="radio" value="licitaciones" name="canal" onclick="filterSelection('licitaciones')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+                <label class="container">Reactivación
+                    <input type="radio" value="reactivacion" name="canal" onclick="filterSelection('reactivacion')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+                <label class="container">Volanteo
+                    <input type="radio" value="volanteo" name="canal" onclick="filterSelection('volanteo')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+                <!------------------->
+
+                <label class="container">Comercio Electrónico
+                    <input type="radio" value="comercio electronico" name="canal"
+                        onclick="filterSelection('comercio electronico')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+                <label class="container">Propios Telemercadeo Referidos
+                    <input type="radio" value="propios telemercadeo referidos" name="canal"
+                        onclick="filterSelection('propios telemercadeo referidos')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+                <!------------------->
+
+                <label class="container">Propios
+                    <input type="radio" value="propios" name="canal" onclick="filterSelection('propios')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+                <!------------------->
+
+                <label class="container">Emisora
+                    <input type="radio" value="emisora" name="canal" onclick="filterSelection('emisora')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+                <label class="container">Cliente Nuevo
+                    <input type="radio" value="cliente nuevo" name="canal" onclick="filterSelection('cliente nuevo')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+                <label class="container">Correspondencia
+                    <input type="radio" value="correspondencia" name="canal"
+                        onclick="filterSelection('correspondencia')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+                <label class="container">Conjuntos
+                    <input type="radio" value="conjuntos" name="canal" onclick="filterSelection('conjuntos')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+                <label class="container">Tienda a Tienda
+                    <input type="radio" value="tienda a tienda" name="canal"
+                        onclick="filterSelection('tienda a tienda')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+                <label class="container">Domicilios
+                    <input type="radio" value="domicilios" name="canal" onclick="filterSelection('domicilios')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+                <!------------------->
+
+
+
+                <label class="container">Telemercadeo
+                    <input type="radio" value="telemercadeo" name="canal" onclick="filterSelection('telemercadeo')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+
+                <!------------------->
+
+
+                <label class="container">Referidos
+                    <input type="radio" value="referidos" name="canal" onclick="filterSelection('referidos')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+
+                <label class="container">Corporativo
+                    <input type="radio" value="corporativo" name="canal" onclick="filterSelection('corporativo')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+
+                <label class="container">Licitaciones
+                    <input type="radio" value="licitaciones" name="canal" onclick="filterSelection('licitaciones')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <!------------------->
+
+
+                <label class="container">Volanteo
+                    <input type="radio" value="volanteo" name="canal" onclick="filterSelection('volanteo')">
+                    </input>
+                    <span class="checkmark"></span>
+                </label>
+
+                <!------------------->
+
+            </div>
+        </section>
+
+
+    </form>
+
+    <section>
+
+        <!--- </select> --->
+        <form name="form2" id="form2" method="POST">
+
+            <div class="container2">
+                <!---  <select id="vendedor" name="vendedor">  -->
+                <div class="centerwrapper">
+
+                    <label id="asesor_" class="filterDiv talleres">Devia Romero Edward Antonio
+                        <input type="radio" value="Devia Romero Edward Antonio" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv talleres">Devia Romero Edward Antonio</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Palomeque Salinas Javier
+                        <input type="radio" value="Palomeque Salinas Javier" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv talleres">Palomeque Salinas Javier</div>-->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Matinez Alison Nicoll
+                        <input type="radio" value="Matinez Alison Nicoll" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv talleres">Matinez Alison Nicoll</div> -->
+
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Freddy Sneyder Castillo Viruta
+                        <input type="radio" value="Freddy Sneyder Castillo Viruta" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--<div class="filterDiv talleres">Freddy Sneyder Castillo Viruta</div> -->
+
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Retirados 80
+                        <input type="radio" value="Retirados 80" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Retirados 80</div>-->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Taller no Registrado 80
+                        <input type="radio" value="Taller no Registrado 80" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Taller no Registrado 80</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Montaña Marin Jackeline
+                        <input type="radio" value="Montaña Marin Jackeline" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Montaña Marin Jackeline</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Rios Pedraza Mayerly
+                        <input type="radio" value="Rios Pedraza Mayerly" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv talleres">Rios Pedraza Mayerly</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Alarxon Torres Jose Yezid
+                        <input type="radio" value="Alarcón Torres Jose Yezid" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv talleres">Alarxon Torres Jose Yezid</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Retirados 170
+                        <input type="radio" value="Retirados 170" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv talleres">Retirados 170</div> -->
+
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Taller no Registrado 170
+                        <input type="radio" value="Taller no Registrado 170" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--<div class="filterDiv talleres">Taller no Registrado 170</div> -->
+
+
+
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Martiez Pablo Emilio
+                        <input type="radio" value="Martiez Pablo Emilio" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Martiez Pablo Emilio</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Retirados 13
+                        <input type="radio" value="Retirados 13" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+
+                    <!--  <div class="filterDiv talleres">Retirados 13</div>-->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Taller no Registrado 13
+                        <input type="radio" value="Taller no Registrado 13" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv talleres">Taller no Registrado 13</div>-->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Hernandez Angelica
+                        <input type="radio" value="Hernandez Angelica" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Hernandez Angelica</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Hernadez Sandra
+                        <input type="radio" value="Hernadez Sandra" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv talleres">Hernadez Sandra</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Milena Gomez
+                        <input type="radio" value="Milena Gomez" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Milena Gomez</div>-->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Luz Dary Morales Navas
+                        <input type="radio" value="Luz Dary Morales Navas" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Luz Dary Morales Navas</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Quiroga Alexandra
+                        <input type="radio" value="Quiroga Alexandra" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Quiroga Alexandra</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Taller no Registrado Celta
+                        <input type="radio" value="Taller no Registrado Celta" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Taller no Registrado Celta</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Yenifer Navarro
+                        <input type="radio" value="Yenifer Navarro" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv talleres">Yenifer Navarro</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Yenny Castillo
+                        <input type="radio" value="Yenny Castillo" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+
+                    <!-- <div class="filterDiv talleres">Yenny Castillo</div> -->
+
+
+                    <label id="asesor_" class="filterDiv talleres">Yenny Paola Forero
+                        <input type="radio" value="Yenny Paola Forero" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv talleres">Yenny Paola Forero</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Patricia Solano
+                        <input type="radio" value="Patricia Solano" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv talleres">Patricia Solano</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Tatiana Osorio
+                        <input type="radio" value="Tatiana Osorio" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv talleres">Tatiana Osorio</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv talleres">Retirados Celta
+                        <input type="radio" value="Retirados Celta" name="talleres">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv talleres">Retirados Celta</div> -->
+
+                    <!------------------------------------------------------------------->
+                    <!------------------------------------------------------------------->
+
+                    <label id="asesor_" class="filterDiv propios">Aviso
+                        <input type="radio" value="Aviso" name="propios">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+
+                    <!--   <div class="filterDiv propios">Aviso</div> -->
+
+
+
+
+                    <label id="asesor_" class="filterDiv propios">Bonos Otro CDA
+                        <input type="radio" value="Bonos Otro CDA" name="propios">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv propios">Bonos Otro CDA</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv propios">Parque
+                        <input type="radio" value="Parque" name="propios">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv propios">Parque</div> -->
+
+
+                    <label id="asesor_" class="filterDiv propios">Camila Rodriguez
+                        <input type="radio" value="Camila Rodriguez" name="propios">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv propios">Camila Rodriguez</div> -->
+
+
+                    <label id="asesor_" class="filterDiv propios">Valla Publicitaria
+                        <input type="radio" value="Valla Publicitaria" name="propios">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv propios">Valla Publicitaria</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv propios">Renovaciones CDA
+                        <input type="radio" value="Renovaciones CDA" name="propios">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv propios">Renovaciones CDA</div> -->
+
+
+                    <!------------------------------------------------------------------->
+                    <!------------------------------------------------------------------->
+
+
+                    <label id="asesor_" class="filterDiv comercio electronico">Facebook
+                        <input type="radio" value="Facebook" name="comercio electronico">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+
+                    <!-- <div class="filterDiv comercio electronico">Facebook</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv comercio electronico">Google
+                        <input type="radio" value="Google" name="comercio electronico">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv comercio electronico">Google</div> -->
+
+
+                    <label id="asesor_" class="filterDiv comercio electronico">Instagram
+                        <input type="radio" value="Instagram" name="comercio electronico">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv comercio electronico">Instagram</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv comercio electronico">Waze
+                        <input type="radio" value="Waze" name="comercio electronico">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv comercio electronico">Waze</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv comercio electronico">Email Marketing
+                        <input type="radio" value="Email Marketing" name="comercio electronico">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv comercio electronico">Email Marketing</div> -->
+
+
+                    <!------------------------------------------------------------------->
+                    <!------------------------------------------------------------------->
+
+
+                    <label id="asesor_" class="filterDiv referidos">Referidos Sin Marcar 80
+                        <input type="radio" value="Referidos Sin Marcar 80" name="referidos">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv referidos">Referidos Sin Marcar 80</div> -->
+
+
+                    <label id="asesor_" class="filterDiv referidos">Referidos Sin Marcar 170
+                        <input type="radio" value="Referidos Sin Marcar 170" name="referidos">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv referidos">Referidos Sin Marcar 170</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv referidos">Referidos Sin Marcar 13
+                        <input type="radio" value="Referidos Sin Marcar 13" name="referidos">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv referidos">Referidos Sin Marcar 13</div> -->
+
+
+
+
+                    <label id="asesor_" class="filterDiv referidos">Referidos Sin Marcar CELTA
+                        <input type="radio" value="Referidos Sin Marcar CELTA" name="referidos">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!-- <div class="filterDiv referidos">Referidos Sin Marcar CELTA</div> -->
+
+
+
+                    <!------------------------------------------------------------------->
+                    <!------------------------------------------------------------------->
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Molano Mary Luz
+                        <input type="radio" value="Molano Mary Luz" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv corporativo">Molano Mary Luz</div> -->
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Lucero Martinez
+                        <input type="radio" value="Lucero Martinez" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv corporativo">Lucero Martinez</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Leonela Cala
+                        <input type="radio" value="Leonela Cala" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv corporativo">Leonela Cala</div> -->
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Perez Rodriguez Carlos Eduardo
+                        <input type="radio" value="Perez Rodriguez Carlos Eduardo" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv corporativo">Perez Rodriguez Carlos Eduardo</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Jonathan Rodriguez Amaya
+                        <input type="radio" value="Jonathan Rodriguez Amaya" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv corporativo">Jonathan Rodriguez Amaya</div> -->
+
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Espitia Paez Blanca Olivia
+                        <input type="radio" value="Espitia Paez Blanca Olivia" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--   <div class="filterDiv corporativo">Espitia Paez Blanca Olivia</div> -->
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Lozano Diana
+                        <input type="radio" value="Lozano Diana" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv corporativo">Lozano Diana</div> -->
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Mantilla Diana Sofía
+                        <input type="radio" value="Mantilla Diana Sofía" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+                    <!--  <div class="filterDiv corporativo">Mantilla Diana Sofía</div>  -->
+
+
+                    <label id="asesor_" class="filterDiv corporativo">Retirados Corporativos
+                        <input type="radio" value="Retirados Corporativos" name="corporativo">
+                        </input>
+                        <span class="checkmark2"></span>
+                    </label>
+
+                    <!--  <div class="filterDiv corporativo">Retirados Corporativos</div> -->
+
+                    <!------------------------------------------------------------------->
+                    <!------------------------------------------------------------------->
+
+
+
+                </div>
+                <!---  </select> --->
+            </div>
+
+
+
+
+
+        </form>
+
+    </section>
+
+
+
+    <section>
+
+        <form>
+            <div class="container3">
+
+                <label id="producto">Particular
+                    <input type="radio" value="particular" name="producto">
+                    </input>
+                    <span class="checkmark3"></span>
+                </label>
+
+                <label id="producto">Moto
+                    <input type="radio" value="moto" name="producto">
+                    </input>
+                    <span class="checkmark3"></span>
+                </label>
+
+                <label id="producto">Publico
+                    <input type="radio" value="publico" name="producto">
+                    </input>
+                    <span class="checkmark3"></span>
+                </label>
+
+
+
+                <label id="producto">Taxi
+                    <input type="radio" value="taxi" name="producto">
+                    </input>
+                    <span class="checkmark3"></span>
+                </label>
+
+
+                <label id="producto">Preventiva
+                    <input type="radio" value="preventiva" name="producto">
+                    </input>
+                    <span class="checkmark3"></span>
+                </label>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <button type="reset" value="Envíame" onclick="submitForms()"> Envíame</button>
+
+    <!--<button type="submit" form="form1" value="Submit">Submit</button> -->
+
+
+    <!-- 
+        <section>
+            <h3>Producto</h3>
+            <select id="producto" name="producto">
+                <option value="----">----</option>
+                <option value="particular liviano">Particular Liviano</option>
+                <option value="taxi">Taxi</option>
+                <option value="publico liviano">Publico Liviano</option>
+                <option value="moto">Moto</option>
+                <option value="particular pesado">Particular Pesado</option>
+                <option value="publico pesado">Publico Pesado</option>
+                <option value="preventiva pesado">Preventiva Pesado</option>
+                <option value="preventiva liviano">Preventiva Liviano</option>
+
+            </select>
+
+        </section>
+
+
+        <section>
+            <h3>Canal</h3>
+
+            <select id="canal" name="canal">
+                <option value="----">----</option>
+                <option value="talleres">Talleres</option>
+                <option value="freelance">Freelance</option>
+                <option value="corporativo">Corporativo</option>
+                <option value="licitaciones">Licitaciones</option>
+                <option value="reactivacion">Reactivación</option>
+                <option value="volanteo">Volanteo</option>
+                <option value="comercio electronico">Comcercio Electrónico</option>
+                <option value="propios telemercado referidos">Propios Telemercadeo Referidos</option>
+                <option value="propios">Propios</option>
+                <option value="emisora">Emisora</option>
+                <option value="telemercadeo">Telemercadeo</option>
+                <option value="cliente nuevo">Cliente Nuevo</option>
+                <option value="correspondencia">Correspondencia</option>
+                <option value="referidos">Referidos</option>
+                <option value="conjuntos">Conjuntos</option>
+                <option value="tienda a tienda">Tienda a Tienda</option>
+                <option value="domicilios">Domicilios</option>
+            </select>
+
+        </section>
+
+
+        <section>
+            <h3>Asesor</h3>
+
+            <select id="asesor" name="asesor">
+                <option value="----">----</option>
+                <option value="jeiler">Jeiler Peña</option>
+                <option value="paul">Paul</option>
+                <option value="blanca">blanca</option>
+            </select>
+
+        </section>
+
+
+        <p> <button type="button" id="submit_button">Enviar Información</button> </p>
+
+</form>
+    
+-->
+
+    <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="{{url_for('static', filename='form.js') }}"></script>
+
+
+
+</body>
+
+</html>

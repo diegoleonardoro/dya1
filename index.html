@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head></head>
+
+<body>
+
+    <h1>Diagnostiya Informe de Ventas </h1>
+
+
+
+
+    <select id="product" onchange="changeProduct();">
+        <option value="0">Particulares Livianos</option>
+        <option value="1">Taxis</option>
+        <option value="2">Motos</option>
+        <option value="3">Preventivas Livianos</option>
+
+    </select>
+
+
+    <select id="sales_chart" onchange="changeProduct();">
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+    </select>
+
+
+    <div id="ordinal_demo">
+    </div>
+    <div id="tooltip"></div>
+
+    <div id="lineChart"> </div>
+    <div id="tooltip2"></div>
+    <div id="map"></div>
+
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='micss.css') }}">
+    <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script> var response_data = JSON.parse('{{ response | tojson}}'); </script>
+    <script src="{{url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+#tooltip{ 
+    position: absolute; 
+    z-index: 2; 
+    background: rgba(0,153,76,0.8); 
+    width:35px; 
+    height:20px; 
+    color:white; 
+    font-size: 14px; 
+    padding:5px; 
+    top:-150px; 
+    left:-150px; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", 
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  } 
+
+  #tooltip2{ 
+    position: absolute; 
+    z-index: 2; 
+    background: rgba(0,153,76,0.8); 
+    width:35px; 
+    height:20px; 
+    color:white; 
+    font-size: 14px; 
+    padding:5px; 
+    top:-150px; 
+    left:-150px; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", 
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  } 
+
+.dot {
+	/* consider the stroke-with the mouse detect radius? */
+	stroke: transparent;
+	stroke-width: 10px;  
+	cursor: pointer;
+}
+ 
+.dot:hover {
+	stroke: rgba(68, 127, 255, 0.3);
+}
